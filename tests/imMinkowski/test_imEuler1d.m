@@ -21,7 +21,7 @@ function testBasic %#ok<*DEFNU>
 
 img = [0 0 1 1 1 0 1 0];
 
-len = imEuler1d(img);
+len = matImage.imMinkowski.imEuler1d(img);
 exp = 2;
 assertEqual(exp, len);
 
@@ -31,15 +31,15 @@ function testAddBorder
 img = ones(1, 5);
 imgb = padarray(img, [0 1]);
 
-len = imEuler1d(img);
-len2 = imEuler1d(imgb);
+len = matImage.imMinkowski.imEuler1d(img);
+len2 = matImage.imMinkowski.imEuler1d(imgb);
 assertEqual(len, len2);
 
 function testCalib
 
 img = [0 0 1 1 1 0 1 0];
 
-len = imEuler1d(img, .4);
+len = matImage.imMinkowski.imEuler1d(img, .4);
 exp = 2;
 assertEqual(exp, len);
 

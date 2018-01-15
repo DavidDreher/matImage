@@ -28,7 +28,7 @@ if exist(fName, 'file')
     delete(fName);
 end
 
-savestack(D, fName);
+matImage.imStacks.savestack(D, fName);
 
 info = imfinfo(fName);
 assertEqual(27, length(info));
@@ -49,7 +49,7 @@ for i = 1:length(list)
     delete(list(i).name);
 end
 
-savestack(D, patternName);
+matImage.imStacks.savestack(D, patternName);
 
 list = dir(genericName);
 assertEqual(27, length(list));
@@ -69,15 +69,15 @@ function test_SaveRGBStack
 mri = load ('mri');
 mri = squeeze(mri.D);
 bin = imclose(mri>0, ones(3, 3));
-bnd = imdilate(imBoundary(bin), ones(3, 3));
-ovr = imOverlay(mri*3, bnd);
+bnd = imdilate(matImage.imFilters.imBoundary(bin), ones(3, 3));
+ovr = matImage.imFilters.imOverlay(mri*3, bnd);
 
 fName = 'testSaveRGBStack.tif';
 if exist(fName, 'file')
     delete(fName);
 end
 
-savestack(ovr, fName);
+matImage.imStacks.savestack(ovr, fName);
 
 info = imfinfo(fName);
 assertEqual(27, length(info));
@@ -93,8 +93,8 @@ function test_SaveRGBSlices
 mri = load ('mri');
 mri = squeeze(mri.D);
 bin = imclose(mri > 0, ones(3, 3));
-bnd = imdilate(imBoundary(bin), ones(3, 3));
-ovr = imOverlay(mri*3, bnd);
+bnd = imdilate(matImage.imFilters.imBoundary(bin), ones(3, 3));
+ovr = matImage.imFilters.imOverlay(mri*3, bnd);
 
 genericName = 'testSaveRGBSlices*.tif';
 patternName = 'testSaveRGBSlices###.tif';
@@ -104,7 +104,7 @@ for i = 1:length(list)
     delete(list(i).name);
 end
 
-savestack(ovr, patternName);
+matImage.imStacks.savestack(ovr, patternName);
 
 list = dir(genericName);
 assertEqual(27, length(list));
@@ -126,7 +126,7 @@ if exist(fName, 'file')
 end
 map = jet(256);
 
-savestack(D, map, fName);
+matImage.imStacks.savestack(D, map, fName);
 
 info = imfinfo(fName);
 assertEqual(27, length(info));
@@ -149,7 +149,7 @@ for i = 1:length(list)
     delete(list(i).name);
 end
 
-savestack(D, map, patternName);
+matImage.imStacks.savestack(D, map, patternName);
 
 list = dir(genericName);
 assertEqual(27, length(list));

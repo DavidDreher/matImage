@@ -21,46 +21,46 @@ function testHoriz %#ok<*DEFNU>
 
 img = logical([0 1 1 1 0 0]);
 exp = 1;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 img = logical([0 1 1 0 1 0]);
 exp = 2;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 img = logical([0 0 1 1 1 1]);
 exp = .5;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 img = logical([1 1 1 0]);
 exp = .5;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 
 img = logical([1 1 1 1 1 1]);
 exp = 0;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 
 function testVertical
 
 img = logical([0 1 1 1 0 0])';
 exp = 1;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 img = logical([0 1 1 0 1 0]');
 exp = 2;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 img = logical([0 0 1 1 1 1]');
 exp = .5;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 img = logical([1 1 1 0]');
 exp = .5;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 
 
 img = logical([1 1 1 1 1 1]');
 exp = 0;
-assertEqual(exp, imEuler1dEstimate(img));
+assertEqual(exp, matImage.imMinkowski.imEuler1dEstimate(img));
 

@@ -44,7 +44,7 @@ orientations = [...
 sphere = [center 40];
 
 % generation of 3D image
-img = discreteBall(lx, ly, lz, sphere);
+img = matImage.imShapes.discreteBall(lx, ly, lz, sphere);
 
 % display image isosurface
 f = figure; set(gca, 'fontsize', 14);
@@ -73,7 +73,7 @@ for i = 1:4
     elli = [center 50 30 10 orientations(i, :)];
     
     % generation of 3D image
-    img = discreteEllipsoid(lx, ly, lz, elli);
+    img = matImage.imShapes.discreteEllipsoid(lx, ly, lz, elli);
     
     % display image isosurface
     clf; set(gca, 'fontsize', 14);
@@ -109,7 +109,7 @@ for i = 1:4
     cubo = [center 90 40 10 orientations(i, :)];
     
     % generation of 3D image
-    img = discreteCuboid(lx, ly, lz, cubo);
+    img = matImage.imShapes.discreteCuboid(lx, ly, lz, cubo);
     
     % display image isosurface
     clf; set(gca, 'fontsize', 14);
@@ -146,7 +146,7 @@ for i = 1:4
     cube = [center 60 orientations(i, :)];
     
     % generation of 3D image
-    img = discreteCube(lx, ly, lz, cube);
+    img = matImage.imShapes.discreteCube(lx, ly, lz, cube);
     
     % display image isosurface
     clf; set(gca, 'fontsize', 14);
@@ -181,7 +181,7 @@ for i = 1:3
     torus = [center 30 10 angles(i, :)];
     
     % generation of 3D image
-    img = discreteTorus(lx, ly, lz, torus);
+    img = matImage.imShapes.discreteTorus(lx, ly, lz, torus);
     
     % display image isosurface
     clf; set(gca, 'fontsize', 14);
@@ -222,7 +222,7 @@ for i = 1:3
     cyl = [p1 p2 10];
     
     % generation of 3D image
-    img = discreteCylinder(lx, ly, lz, cyl);
+    img = matImage.imShapes.discreteCylinder(lx, ly, lz, cyl);
     
     % display image isosurface
     clf; set(gca, 'fontsize', 14);

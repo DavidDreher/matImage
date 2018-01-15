@@ -20,21 +20,21 @@ initTestSuite;
 
 function test_scalarSize %#ok<*DEFNU>
 
-k = gaussianKernel3d(3, 2);
+k = matImage.imFilters.gaussianKernel3d(3, 2);
 
 assertEqual([3 3 3], size(k));
 assertElementsAlmostEqual(1, sum(k(:)));
 
 function test_vectorSize
 
-k = gaussianKernel3d([7 7 5], 3);
+k = matImage.imFilters.gaussianKernel3d([7 7 5], 3);
 
 assertEqual([7 7 5], size(k));
 assertElementsAlmostEqual(1, sum(k(:)));
  
 function test_vectorSigma
 
-k = gaussianKernel3d([7 7 5], [2 2 1]);
+k = matImage.imFilters.gaussianKernel3d([7 7 5], [2 2 1]);
 
 assertEqual([7 7 5], size(k));
 assertElementsAlmostEqual(1, sum(k(:)));

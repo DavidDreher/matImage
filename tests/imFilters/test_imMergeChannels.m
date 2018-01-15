@@ -24,10 +24,10 @@ g = zeros(10, 10, 'uint8');
 r(3:5, 3:7) = 210;
 b = zeros(10, 10, 'uint8');
 r(6:8, 2:6) = 220;
-rgb = imMergeChannels(r, g, b);
+rgb = matImage.imFilters.imMergeChannels(r, g, b);
 assertEqual([10 10 3], size(rgb));
 
-[r2 g2 b2] = imSplitChannels(rgb);
+[r2 g2 b2] = matImage.imFilters.imSplitChannels(rgb);
 assertEqual(r, r2);
 assertEqual(g, g2);
 assertEqual(b, b2);
@@ -41,10 +41,10 @@ g = zeros(10, 10, 10, 'uint8');
 r(3:5, 3:7, 2:5) = 220;
 b = zeros(10, 10, 10, 'uint8');
 r(6:8, 2:6, 3:4) = 250;
-rgb = imMergeChannels(r, g, b);
+rgb = matImage.imFilters.imMergeChannels(r, g, b);
 assertEqual([10 10 3 10], size(rgb));
 
-[r2 g2 b2] = imSplitChannels(rgb);
+[r2 g2 b2] = matImage.imFilters.imSplitChannels(rgb);
 assertEqual(r, r2);
 assertEqual(g, g2);
 assertEqual(b, b2);

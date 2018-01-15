@@ -41,7 +41,7 @@ hold on;
 % pour chaque particule, calcule et affiche le chemin
 tic;
 for i=1:max(lbl(:))
-    path = imMaxGeodesicPath(lbl == i);
+    path = matImage.imGeodesics.imMaxGeodesicPath(lbl == i);
     plot(path(:,1), path(:,2), 'color', 'r', 'linewidth', 2);
 end
 

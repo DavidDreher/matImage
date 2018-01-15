@@ -21,7 +21,7 @@ initTestSuite;
 function test_grayStack %#ok<*DEFNU>
 
 img = createTestImage;
-dim = stackSize(img);
+dim = matImage.imStacks.stackSize(img);
 
 assertEqual([10 15 20], dim);
 
@@ -31,7 +31,7 @@ img = uint8(createTestImage);
 img = permute(img, [1 2 4 3]);
 rgb = cat(3, img, img, img);
 
-dim = stackSize(rgb);
+dim = matImage.imStacks.stackSize(rgb);
 assertEqual([10 15 20], dim);
 
 

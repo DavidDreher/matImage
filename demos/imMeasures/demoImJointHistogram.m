@@ -43,7 +43,7 @@ title('image recalee');
 %% Avant recalage
 
 % calcule histo joint
-res = imJointHistogram(img1, img2);
+res = matImage.imMeasures.imJointHistogram(img1, img2);
 
 % affiche image et histo joint (log)
 figure(2);
@@ -58,7 +58,7 @@ title('joint histo');
 %% Apres recalage
 
 % calcule histo joint
-res2 = imJointHistogram(img1, rec);
+res2 = matImage.imMeasures.imJointHistogram(img1, rec);
 
 % affiche image et histo joint  (log)
 figure(3);
@@ -73,10 +73,10 @@ title('joint histo');
 %% Decalage de l'image de depart
 
 % histo joint apres decalage de 1 pixel
-hDec1 = imJointHistogram(img1(1:end-1, :), img1(2:end, :));
+hDec1 = matImage.imMeasures.imJointHistogram(img1(1:end-1, :), img1(2:end, :));
 
 % histo joint apres decalage de 2 pixels
-hDec2 = imJointHistogram(img1(1:end-2, :), img1(3:end, :));
+hDec2 = matImage.imMeasures.imJointHistogram(img1(1:end-2, :), img1(3:end, :));
 
 % affiche les histo joints
 figure(4); clf;

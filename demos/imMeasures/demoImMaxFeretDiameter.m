@@ -36,7 +36,7 @@ imshow(img2);
 
 % display histogram, to identify the threshold value
 figure(3); clf;
-imHistogram(img2);
+matImage.imMeasures.imHistogram(img2);
 
 % image binarisation, and remove particles touching border
 bin = img2 > 50;
@@ -56,10 +56,10 @@ imshow(rgb);
 %% Compute enclosing oriented boxes
 
 % compute diameters with corresponding angles
-[diams thetas] = imMaxFeretDiameter(lbl);
+[diams thetas] = matImage.imMeasures.imMaxFeretDiameter(lbl);
 
 % also compute centroids
-centros = imCentroid(lbl);
+centros = matImage.imMeasures.imCentroid(lbl);
 
 % overlay result on image
 hold on;

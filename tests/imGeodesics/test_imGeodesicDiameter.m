@@ -24,10 +24,10 @@ function test_Square5x5 %#ok<*DEFNU>
 img = zeros(8, 8);
 img(2:6, 3:7) = 1;
 
-assertElementsAlmostEqual(4*sqrt(2), imGeodesicDiameter(img));
-assertElementsAlmostEqual(4, imGeodesicDiameter(img, [1 1]));
-assertElementsAlmostEqual(8, imGeodesicDiameter(img, [1 2]));
-assertElementsAlmostEqual(16/3, imGeodesicDiameter(img, [3 4]));
+assertElementsAlmostEqual(4*sqrt(2), matImage.imGeodesics.imGeodesicDiameter(img));
+assertElementsAlmostEqual(4, matImage.imGeodesics.imGeodesicDiameter(img, [1 1]));
+assertElementsAlmostEqual(8, matImage.imGeodesics.imGeodesicDiameter(img, [1 2]));
+assertElementsAlmostEqual(16/3, matImage.imGeodesics.imGeodesicDiameter(img, [3 4]));
 
 
 function test_SmallSpiral
@@ -49,14 +49,14 @@ no = 5 + 1 + 3 + 2;
 nd = 2 + 2 + 3 + 1;
 
 exp1s2 = no + nd*sqrt(2);
-assertElementsAlmostEqual(exp1s2, imGeodesicDiameter(img));
+assertElementsAlmostEqual(exp1s2, matImage.imGeodesics.imGeodesicDiameter(img));
 exp11 = no + nd;
-assertElementsAlmostEqual(exp11, imGeodesicDiameter(img, [1 1]));
+assertElementsAlmostEqual(exp11, matImage.imGeodesics.imGeodesicDiameter(img, [1 1]));
 exp12 = no + nd*2;
-assertElementsAlmostEqual(exp12, imGeodesicDiameter(img, [1 2]));
+assertElementsAlmostEqual(exp12, matImage.imGeodesics.imGeodesicDiameter(img, [1 2]));
 exp34 = (no*3 + nd*4)/3;
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img, [3 4]));
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img, uint16([3 4])));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img, [3 4]));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img, uint16([3 4])));
 
 function test_VerticalLozenge
 % vertical lozenge that does not pass test with first version of algo
@@ -75,11 +75,11 @@ img = [...
 
 exp = 6;
 
-assertElementsAlmostEqual(exp, imGeodesicDiameter(img));
-assertElementsAlmostEqual(exp, imGeodesicDiameter(img, [1 1]));
-assertElementsAlmostEqual(exp, imGeodesicDiameter(img, [1 2]));
-assertElementsAlmostEqual(exp, imGeodesicDiameter(img, [3 4]));
-assertElementsAlmostEqual(exp, imGeodesicDiameter(img, uint16([3 4])));
+assertElementsAlmostEqual(exp, matImage.imGeodesics.imGeodesicDiameter(img));
+assertElementsAlmostEqual(exp, matImage.imGeodesics.imGeodesicDiameter(img, [1 1]));
+assertElementsAlmostEqual(exp, matImage.imGeodesics.imGeodesicDiameter(img, [1 2]));
+assertElementsAlmostEqual(exp, matImage.imGeodesics.imGeodesicDiameter(img, [3 4]));
+assertElementsAlmostEqual(exp, matImage.imGeodesics.imGeodesicDiameter(img, uint16([3 4])));
 
 function test_SeveralParticles
 
@@ -94,16 +94,16 @@ exp12 = [4 5 5 6]';
 exp34 = [8/3 11/3 11/3 12/3]';
 
 % test on label image
-assertElementsAlmostEqual(exp11, imGeodesicDiameter(img, [1 1]));
-assertElementsAlmostEqual(exp12, imGeodesicDiameter(img, [1 2]));
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img, [3 4]));
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img, uint16([3 4])));
+assertElementsAlmostEqual(exp11, matImage.imGeodesics.imGeodesicDiameter(img, [1 1]));
+assertElementsAlmostEqual(exp12, matImage.imGeodesics.imGeodesicDiameter(img, [1 2]));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img, [3 4]));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img, uint16([3 4])));
 
 % test on binary image that will be labeled
-assertElementsAlmostEqual(exp11, imGeodesicDiameter(img>0, [1 1]));
-assertElementsAlmostEqual(exp12, imGeodesicDiameter(img>0, [1 2]));
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img>0, [3 4]));
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img>0, uint16([3 4])));
+assertElementsAlmostEqual(exp11, matImage.imGeodesics.imGeodesicDiameter(img>0, [1 1]));
+assertElementsAlmostEqual(exp12, matImage.imGeodesics.imGeodesicDiameter(img>0, [1 2]));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img>0, [3 4]));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img>0, uint16([3 4])));
 
 
 
@@ -127,15 +127,15 @@ no = 5 + 1 + 3 + 2;
 nd = 2 + 2 + 3 + 1;
 
 exp1s2 = no + nd*sqrt(2);
-assertElementsAlmostEqual(exp1s2, imGeodesicDiameter(img, 'verbose', true));
+assertElementsAlmostEqual(exp1s2, matImage.imGeodesics.imGeodesicDiameter(img, 'verbose', true));
 exp11 = no + nd;
-assertElementsAlmostEqual(exp11, imGeodesicDiameter(img, [1 1], 'verbose', true));
+assertElementsAlmostEqual(exp11, matImage.imGeodesics.imGeodesicDiameter(img, [1 1], 'verbose', true));
 exp12 = no + nd*2;
-assertElementsAlmostEqual(exp12, imGeodesicDiameter(img, [1 2], 'verbose', true));
+assertElementsAlmostEqual(exp12, matImage.imGeodesics.imGeodesicDiameter(img, [1 2], 'verbose', true));
 exp34 = (no*3 + nd*4)/3;
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img, [3 4], 'verbose', true));
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img, uint16([3 4]), 'verbose', true));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img, [3 4], 'verbose', true));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img, uint16([3 4]), 'verbose', true));
 
 
 % and a small test to check verbosity when labelling
-assertElementsAlmostEqual(exp34, imGeodesicDiameter(img>0, [3 4], 'verbose', true));
+assertElementsAlmostEqual(exp34, matImage.imGeodesics.imGeodesicDiameter(img>0, [3 4], 'verbose', true));

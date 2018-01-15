@@ -28,7 +28,7 @@ img(2, 4) = true;
 exp = false([6 6]);
 exp(2, 2:4) = true;
 
-cvx = imConvexImage(img);
+cvx = matImage.imFilters.imConvexImage(img);
 assertEqual(exp, cvx);
 
 % we add two points
@@ -39,7 +39,7 @@ img(4, 4) = true;
 exp = false([6 6]);
 exp(2:4, 2:4) = true;
 
-cvx = imConvexImage(img);
+cvx = matImage.imFilters.imConvexImage(img);
 assertEqual(exp, cvx);
 
 
@@ -54,7 +54,7 @@ img(2, 2, 4) = true;
 exp = false([6 6 6]);
 exp(2, 2, 2:4) = true;
 
-cvx = imConvexImage(img);
+cvx = matImage.imFilters.imConvexImage(img);
 assertEqual(exp, cvx);
 
 
@@ -66,5 +66,5 @@ img(2, 4, 4) = true;
 exp = false([6 6 6]);
 exp(2, 2:4, 2:4) = true;
 
-cvx = imConvexImage(img);
+cvx = matImage.imFilters.imConvexImage(img);
 assertEqual(exp, cvx);

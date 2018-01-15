@@ -21,6 +21,6 @@ function test_Simple %#ok<*DEFNU>
 % Test call of function without argument
 
 fName = fullfile('images', 'densityMap1.vm');
-img = readVoxelMatrix(fName);
+img = matImage.imStacks.readVoxelMatrix(fName);
 
 assertFalse(isempty(img));

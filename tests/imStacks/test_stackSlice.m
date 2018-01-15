@@ -21,36 +21,36 @@ initTestSuite;
 function test_sliceX_gray %#ok<*DEFNU>
 
 img = createTestImage;
-dim = stackSize(img);
+dim = matImage.imStacks.stackSize(img);
 
-sliceYZ = stackSlice(img, 1, 5);
+sliceYZ = matImage.imStacks.stackSlice(img, 1, 5);
 assertEqual([dim(3) dim(2)], size(sliceYZ));
 
-sliceYZ = stackSlice(img, 'x', 5);
+sliceYZ = matImage.imStacks.stackSlice(img, 'x', 5);
 assertEqual([dim(3) dim(2)], size(sliceYZ));
 
 
 function test_sliceY_gray %#ok<*DEFNU>
 
 img = createTestImage;
-dim = stackSize(img);
+dim = matImage.imStacks.stackSize(img);
 
-sliceZX = stackSlice(img, 2, 5);
+sliceZX = matImage.imStacks.stackSlice(img, 2, 5);
 assertEqual([dim(1) dim(3)], size(sliceZX));
 
-sliceZX = stackSlice(img, 'y', 5);
+sliceZX = matImage.imStacks.stackSlice(img, 'y', 5);
 assertEqual([dim(1) dim(3)], size(sliceZX));
 
 
 function test_sliceZ_gray %#ok<*DEFNU>
 
 img = createTestImage;
-dim = stackSize(img);
+dim = matImage.imStacks.stackSize(img);
 
-sliceXY = stackSlice(img, 3, 5);
+sliceXY = matImage.imStacks.stackSlice(img, 3, 5);
 assertEqual([dim(2) dim(1)], size(sliceXY));
 
-sliceXY = stackSlice(img, 'z', 5);
+sliceXY = matImage.imStacks.stackSlice(img, 'z', 5);
 assertEqual([dim(2) dim(1)], size(sliceXY));
 
 

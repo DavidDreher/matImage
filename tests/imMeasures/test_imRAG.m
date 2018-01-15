@@ -26,7 +26,7 @@ img = [...
     3 3 0 4 4 4 ; ...
     3 3 0 4 4 4 ];
 exp = [1 2;1 3;2 4;3 4];
-rag = imRAG(img);
+rag = matImage.imMeasures.imRAG(img);
 assertEqual(exp, rag);
 
 
@@ -40,7 +40,7 @@ img(1:6, 8:9) = 3;
 img(8:9, 1:6) = 4;
 img(8:9, 8:9) = 5;
 
-rag = imRAG(img);
+rag = matImage.imMeasures.imRAG(img);
 assertEqual(5, size(rag, 1));
 expected = [1 2;1 3;1 4;3 5;4 5];
 assertElementsAlmostEqual(expected, rag);
@@ -56,7 +56,7 @@ img(1:6, 8:9) = 30;
 img(8:9, 1:6) = 40;
 img(8:9, 8:9) = 50;
 
-rag = imRAG(img);
+rag = matImage.imMeasures.imRAG(img);
 assertEqual(5, size(rag, 1));
 expected = [1 2;1 3;1 4;3 5;4 5]*10;
 assertElementsAlmostEqual(expected, rag);
@@ -74,7 +74,7 @@ img(l1, l2, l2) = 6;
 img(l2, l1, l2) = 7;
 img(l2, l2, l2) = 8;
 
-rag = imRAG(img);
+rag = matImage.imMeasures.imRAG(img);
 assertEqual(12, size(rag, 1));
 
 function testCentroids
@@ -90,7 +90,7 @@ c2 = [5 2];
 c3 = [3 4.75];
 eTh = [1 2;1 3;2 3];
 
-[n e] = imRAG(img);
+[n e] = matImage.imMeasures.imRAG(img);
 assertElementsAlmostEqual(eTh, e);
 
 assertElementsAlmostEqual(c1, n(1,:));
@@ -110,7 +110,7 @@ img(l2, l1, l2) = 6;
 img(l2, l2, l1) = 7;
 img(l2, l2, l2) = 8;
 
-[n e] = imRAG(img);
+[n e] = matImage.imMeasures.imRAG(img);
 assertEqual(12, size(e, 1));
 
 assertElementsAlmostEqual([2.5 2.5 2.5], n(1,:));
@@ -124,7 +124,7 @@ img = [...
     3 3 4 4 4 ; ...
     3 3 4 4 4 ];
 exp = [1 2;1 3;2 4;3 4];
-rag = imRAG(img, 0);
+rag = matImage.imMeasures.imRAG(img, 0);
 assertEqual(exp, rag);
 
 function testNoGap3d
@@ -135,6 +135,6 @@ img = cat(3, ...
     [5 5 6 6; 5 5 6 6; 7 7 8 8; 7 7 8 8],  ...
     [5 5 6 6; 5 5 6 6; 7 7 8 8; 7 7 8 8]);
 exp = [1 2;1 3;1 5;2 4;2 6;3 4;3 7;4 8;5 6;5 7;6 8;7 8];
-rag = imRAG(img, 0);
+rag = matImage.imMeasures.imRAG(img, 0);
 assertEqual(exp, rag);
 

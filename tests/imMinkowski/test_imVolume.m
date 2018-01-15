@@ -22,7 +22,7 @@ function testBasic %#ok<*DEFNU>
 img = ones([2 3 4]);
 img = padarray(img, [1 1 1]);
 
-v = imVolume(img);
+v = matImage.imMinkowski.imVolume(img);
 exp = prod([2 3 4]);
 assertEqual(exp, v);
 
@@ -32,8 +32,8 @@ function testAddBorder
 img = ones([5 5 5]);
 imgb = padarray(img, [1 1 1]);
 
-v0 = imVolume(img);
-v2 = imVolume(imgb);
+v0 = matImage.imMinkowski.imVolume(img);
+v2 = matImage.imMinkowski.imVolume(imgb);
 assertEqual(v0, v2);
 
 
@@ -42,7 +42,7 @@ function test_Anisotropic
 img = ones([5 5 5]);
 imgb = padarray(img, [1 1 1]);
 
-v0 = imVolume(img, [1 2 3]);
-v2 = imVolume(imgb, [1 2 3]);
+v0 = matImage.imMinkowski.imVolume(img, [1 2 3]);
+v2 = matImage.imMinkowski.imVolume(imgb, [1 2 3]);
 assertEqual(v0, v2);
 

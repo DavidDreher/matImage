@@ -29,7 +29,7 @@ img = [ ...
     0 1 0 0 0 1 1 ; ...
 ] > 0;
 
-pd = imPerimeterDensity(img);
+pd = matImage.imMinkowski.imPerimeterDensity(img);
 assertEqual([1 1], size(pd));
 assertTrue(pd < 1);
 
@@ -45,11 +45,11 @@ img = [ ...
     0 1 0 0 0 1 1 ; ...
 ] > 0;
 
-pd2 = imPerimeterDensity(img, 2);
+pd2 = matImage.imMinkowski.imPerimeterDensity(img, 2);
 assertEqual([1 1], size(pd2));
 assertTrue(pd2 < 1);
 
-pd4 = imPerimeterDensity(img, 4);
+pd4 = matImage.imMinkowski.imPerimeterDensity(img, 4);
 assertEqual([1 1], size(pd4));
 assertTrue(pd4 < 1);
 

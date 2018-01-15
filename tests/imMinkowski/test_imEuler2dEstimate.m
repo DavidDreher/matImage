@@ -24,13 +24,13 @@ img = false(20, 20);
 img(5:15, 5:15) = true;
 
 % real EPC of the image
-chi = imEuler2d(img);
+chi = matImage.imMinkowski.imEuler2d(img);
 
 % estimate EPC in each image using edge correction
-chi1 = imEuler2dEstimate(img(1:10, 1:10));
-chi2 = imEuler2dEstimate(img(1:10, 10:20));
-chi3 = imEuler2dEstimate(img(10:20, 1:10));
-chi4 = imEuler2dEstimate(img(10:20, 10:20));
+chi1 = matImage.imMinkowski.imEuler2dEstimate(img(1:10, 1:10));
+chi2 = matImage.imMinkowski.imEuler2dEstimate(img(1:10, 10:20));
+chi3 = matImage.imMinkowski.imEuler2dEstimate(img(10:20, 1:10));
+chi4 = matImage.imMinkowski.imEuler2dEstimate(img(10:20, 10:20));
 
 % sum of 4 estimates
 chis = chi1 + chi2 + chi3 + chi4;
@@ -46,7 +46,7 @@ img(6:8, 2:3) = 5;
 img(3:5, 5:8) = 9;
 img(4, 6) = 0;
 
-[chi labels] = imEuler2dEstimate(img);
+[chi labels] = matImage.imMinkowski.imEuler2dEstimate(img);
 
 assertElementsAlmostEqual(chi, [1 1 0]');
 assertElementsAlmostEqual(labels, [3 5 9]');

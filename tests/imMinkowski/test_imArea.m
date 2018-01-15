@@ -22,7 +22,7 @@ function testSquare %#ok<*DEFNU>
 img = false(10, 10);
 img(3:3+4, 4:4+4) = true;
 
-a = imArea(img);
+a = matImage.imMinkowski.imArea(img);
 assertEqual(25, a);
 
 
@@ -34,21 +34,21 @@ img(3:3+2, 4:4+3) = true;
 delta = [3 5];
 expectedArea = 3*delta(1) * 4*delta(2); 
 
-a = imArea(img, delta);
+a = matImage.imMinkowski.imArea(img, delta);
 assertEqual(expectedArea, a);
 
 function testLabel
 
 % create image with 5 different regions
 img = floor(rand(10, 10)*5)+1;
-a = imArea(img);
+a = matImage.imMinkowski.imArea(img);
 assertEqual(length(a), 5);
 assertEqual(numel(img), sum(a));
 
 function testLabelImage
 
 lbl = bwlabel(imread('coins.png') > 100);
-a = imArea(lbl);
+a = matImage.imMinkowski.imArea(lbl);
 
 assertEqual(10, length(a));
 assertTrue(min(a) > 1500);

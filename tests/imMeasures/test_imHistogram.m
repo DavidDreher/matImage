@@ -20,7 +20,7 @@ initTestSuite;
 function test_cameraman %#ok<*DEFNU>
 
 img = imread('cameraman.tif');
-h = imHistogram(img);
+h = matImage.imMeasures.imHistogram(img);
 
 assertEqual(256, length(h));
 assertEqual(numel(img), sum(h));
@@ -29,23 +29,23 @@ assertEqual(numel(img), sum(h));
 function test_cameraman_nbins
 
 img = imread('cameraman.tif');
-h0 = imHistogram(img);
-h = imHistogram(img, 256);
+h0 = matImage.imMeasures.imHistogram(img);
+h = matImage.imMeasures.imHistogram(img, 256);
 assertEqual(h0, h);
 
 
 function test_cameraman_xlims 
 
 img = imread('cameraman.tif');
-h0 = imHistogram(img);
-h = imHistogram(img, [0 255]);
+h0 = matImage.imMeasures.imHistogram(img);
+h = matImage.imMeasures.imHistogram(img, [0 255]);
 assertEqual(h0, h);
 
 function test_cameraman_xbins 
 
 img = imread('cameraman.tif');
-h0 = imHistogram(img);
-h = imHistogram(img, linspace(0, 255, 256));
+h0 = matImage.imMeasures.imHistogram(img);
+h = matImage.imMeasures.imHistogram(img, linspace(0, 255, 256));
 assertEqual(h0, h);
 
 
@@ -53,17 +53,17 @@ function test_cameraman_display
 
 img = imread('cameraman.tif');
 figure;
-imHistogram(img);
+matImage.imMeasures.imHistogram(img);
 close;
 
 
 function test_cameraman_float
 
 img = imread('cameraman.tif');
-h0 = imHistogram(img);
+h0 = matImage.imMeasures.imHistogram(img);
 
 img = double(img)/255;
-h = imHistogram(img, [0 1]);
+h = matImage.imMeasures.imHistogram(img, [0 1]);
 
 assertEqual(numel(img), sum(h));
 assertEqual(h0, h);
@@ -73,8 +73,8 @@ function test_cameraman_roi
 
 img = imread('cameraman.tif');
 mask = img<80;
-h1 = imHistogram(img, mask);
-h2 = imHistogram(img, ~mask);
+h1 = matImage.imMeasures.imHistogram(img, mask);
+h2 = matImage.imMeasures.imHistogram(img, ~mask);
 
 assertEqual(256, length(h1));
 assertEqual(256, length(h2));
@@ -84,7 +84,7 @@ assertEqual(numel(img), sum(h1)+sum(h2));
 function test_peppers
 
 img = imread('peppers.png');
-h = imHistogram(img);
+h = matImage.imMeasures.imHistogram(img);
 
 assertEqual([256 3], size(h));
 assertEqual(numel(img), sum(h(:)));
@@ -94,7 +94,7 @@ function test_peppers_display %#ok<*DEFNU>
 
 img = imread('peppers.png');
 figure;
-imHistogram(img);
+matImage.imMeasures.imHistogram(img);
 close;
 
 
@@ -104,8 +104,8 @@ img = imread('peppers.png');
 hsv = rgb2hsv(img);
 mask = hsv(:,:,1)<.7 | hsv(:,:,1)>.9;
 
-h1 = imHistogram(img, mask);
-h2 = imHistogram(img, ~mask);
+h1 = matImage.imMeasures.imHistogram(img, mask);
+h2 = matImage.imMeasures.imHistogram(img, ~mask);
 
 assertEqual(256, size(h1, 1));
 assertEqual(256, size(h2, 1));
@@ -116,14 +116,14 @@ function test_brainMRI
 
 info = analyze75info('brainMRI.hdr');
 X = analyze75read(info);
-h = imHistogram(X);
+h = matImage.imMeasures.imHistogram(X);
 assertEqual(numel(X), sum(h(:)));
 
 function test_brainMRI_roi_bins
 
 info = analyze75info('brainMRI.hdr');
 X = analyze75read(info);
-h = imHistogram(X, X>0, 1:88);
+h = matImage.imMeasures.imHistogram(X, X>0, 1:88);
 
 assertEqual(88, length(h));
 

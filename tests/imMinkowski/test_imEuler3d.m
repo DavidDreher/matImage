@@ -20,31 +20,31 @@ initTestSuite;
 function test_ball %#ok<*DEFNU>
 
 % create a simple ball
-img = discreteBall(1:20, 1:20, 1:20, [10 10 10 6]);
+img = matImage.imShapes.discreteBall(1:20, 1:20, 1:20, [10 10 10 6]);
 
 % check EPC=1 for all adjacencies
 epcTh = 1;
-assertEqual(epcTh, imEuler3d(img));
-assertEqual(epcTh, imEuler3d(img, 6));
-assertEqual(epcTh, imEuler3d(img, 26));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img, 6));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img, 26));
 
 % add a holes in the ball -> EPC=2
-img = img & ~discreteBall(1:20, 1:20, 1:20, [10 10 10 3]);
+img = img & ~matImage.imShapes.discreteBall(1:20, 1:20, 1:20, [10 10 10 3]);
 
 % check EPC=1 for all adjacencies
 epcTh  = 2;
-assertEqual(epcTh, imEuler3d(img));
-assertEqual(epcTh, imEuler3d(img, 6));
-assertEqual(epcTh, imEuler3d(img, 26));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img, 6));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img, 26));
 
 function test_Torus
 
 % create a torus, EPC=0
-img = discreteTorus(1:60, 1:60, 1:60, [30 30 30 20 5 60 45]);
+img = matImage.imShapes.discreteTorus(1:60, 1:60, 1:60, [30 30 30 20 5 60 45]);
 
 % check EPC=1 for all adjacencies
 epcTh = 0;
-assertEqual(epcTh, imEuler3d(img));
-assertEqual(epcTh, imEuler3d(img, 6));
-assertEqual(epcTh, imEuler3d(img, 26));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img, 6));
+assertEqual(epcTh, matImage.imMinkowski.imEuler3d(img, 26));
 

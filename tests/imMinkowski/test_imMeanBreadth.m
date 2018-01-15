@@ -23,8 +23,8 @@ img = ones([5 5 5]);
 imgb = padarray(img, [1 1 1]);
 
 nDir = 3;
-b = imMeanBreadth(img, nDir);
-bb = imMeanBreadth(imgb, nDir);
+b = matImage.imMinkowski.imMeanBreadth(img, nDir);
+bb = matImage.imMinkowski.imMeanBreadth(imgb, nDir);
 assertEqual(b, bb);
 
 function testAddBorderD13
@@ -33,8 +33,8 @@ img = ones([5 5 5]);
 imgb = padarray(img, [1 1 1]);
 
 nDir = 13;
-b = imMeanBreadth(img, nDir);
-bb = imMeanBreadth(imgb, nDir);
+b = matImage.imMinkowski.imMeanBreadth(img, nDir);
+bb = matImage.imMinkowski.imMeanBreadth(imgb, nDir);
 assertEqual(b, bb);
 
 function test_Anisotropic
@@ -43,7 +43,7 @@ img = ones([5 5 5]);
 imgb = padarray(img, [1 1 1]);
 
 nDir = 3;
-b = imMeanBreadth(img, nDir, [1 2 3]);
-bb = imMeanBreadth(imgb, nDir, [1 2 3]);
+b = matImage.imMinkowski.imMeanBreadth(img, nDir, [1 2 3]);
+bb = matImage.imMinkowski.imMeanBreadth(imgb, nDir, [1 2 3]);
 assertEqual(b, bb);
 

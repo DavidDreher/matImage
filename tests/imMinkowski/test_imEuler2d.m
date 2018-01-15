@@ -26,7 +26,7 @@ img(7, 8) = true;
 img(1, 2) = true;
 img(10, 2) = true;
 
-epc = imEuler2d(img);
+epc = matImage.imMinkowski.imEuler2d(img);
 assertEqual(4, epc);
 
 
@@ -40,7 +40,7 @@ img(6, 10) = true;
 img(4, 10) = true;
 img(10, 10) = true;
 
-epc = imEuler2d(img);
+epc = matImage.imMinkowski.imEuler2d(img);
 assertEqual(5, epc);
 
 function testConn8
@@ -51,7 +51,7 @@ img(3, 4) = true;
 img(4, 5) = true;
 img(5, 4) = true;
 
-epc = imEuler2d(img);
+epc = matImage.imMinkowski.imEuler2d(img);
 assertEqual(3, epc);
 
 function testLabels
@@ -63,7 +63,7 @@ img(6:8, 2:3) = 5;
 img(3:5, 5:8) = 9;
 img(4, 6) = 0;
 
-[chi labels] = imEuler2d(img);
+[chi labels] = matImage.imMinkowski.imEuler2d(img);
 
 assertElementsAlmostEqual(chi, [1 1 0]');
 assertElementsAlmostEqual(labels, [3 5 9]');
@@ -72,7 +72,7 @@ assertElementsAlmostEqual(labels, [3 5 9]');
 function testLabelImage
 
 lbl = bwlabel(imread('coins.png') > 100);
-chi = imEuler2d(lbl);
+chi = matImage.imMinkowski.imEuler2d(lbl);
 
 assertEqual(10, length(chi));
 assertEqual(1, max(chi));

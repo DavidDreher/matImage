@@ -23,8 +23,8 @@ img = ones([5, 5]);
 imgb = padarray(img, [1 1]);
 
 nd  = 2;
-p   = imPerimeter(img, nd);
-pb  = imPerimeter(imgb, nd);
+p   = matImage.imMinkowski.imPerimeter(img, nd);
+pb  = matImage.imMinkowski.imPerimeter(imgb, nd);
 assertEqual(p, pb);
 
 function testAddBorderD4
@@ -33,8 +33,8 @@ img = ones([5, 5]);
 imgb = padarray(img, [1 1]);
 
 nd  = 4;
-p   = imPerimeter(img, nd);
-pb  = imPerimeter(imgb, nd);
+p   = matImage.imMinkowski.imPerimeter(img, nd);
+pb  = matImage.imMinkowski.imPerimeter(imgb, nd);
 assertEqual(p, pb);
 
 
@@ -44,14 +44,14 @@ img = ones([5, 5]);
 imgb = padarray(img, [1 1]);
 
 nd  = 4;
-p   = imPerimeter(img, nd, [2 3]);
-pb  = imPerimeter(imgb, nd, [2 3]);
+p   = matImage.imMinkowski.imPerimeter(img, nd, [2 3]);
+pb  = matImage.imMinkowski.imPerimeter(imgb, nd, [2 3]);
 assertEqual(p, pb);
 
 function testLabelImage
 
 lbl = bwlabel(imread('coins.png') > 100);
-p = imPerimeter(lbl);
+p = matImage.imMinkowski.imPerimeter(lbl);
 
 assertEqual(10, length(p));
 assertTrue(min(p) > 150);

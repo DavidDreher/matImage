@@ -24,10 +24,10 @@ img(4:7, 4:7) = 150;
 img(5:6, 5:6) = 250;
 imgSize = size(img);
 
-metaImageWrite(img, 'img_10x10_gray8');
+matImage.imStacks.metaImageWrite(img, 'img_10x10_gray8');
 
-info = metaImageInfo('img_10x10_gray8.mhd');
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo('img_10x10_gray8.mhd');
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -43,16 +43,16 @@ img(5:6, 5:6) = 250;
 imgSize = size(img);
 
 fileName = fullfile('images', 'img_10x10_gray8_Dir.mhd');
-metaImageWrite(img, fileName);
+matImage.imStacks.metaImageWrite(img, fileName);
 
-info = metaImageInfo(fileName);
+info = matImage.imStacks.metaImageInfo(fileName);
 
 % % check the binary filename has no directory part
 % binaryFileName = info.ElementDataFile;
 % [path name] = fileparts(binaryFileName);
 % assertTrue(isempty(path));
 
-res = metaImageRead(info);
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -67,10 +67,10 @@ img(4:7, 4:7) = 150;
 img(5:6, 5:6) = 250;
 imgSize = size(img);
 
-metaImageWrite(img, 'img_10x10_gray8');
+matImage.imStacks.metaImageWrite(img, 'img_10x10_gray8');
 
-info = metaImageInfo('img_10x10_gray8');
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo('img_10x10_gray8');
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -87,10 +87,10 @@ img(4:7, 4:7) = 150;
 img(5:6, 5:6) = 250;
 imgSize = size(img);
 
-metaImageWrite(img, 'img_10x15_gray8');
+matImage.imStacks.metaImageWrite(img, 'img_10x15_gray8');
 
-info = metaImageInfo('img_10x15_gray8.mhd');
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo('img_10x15_gray8.mhd');
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -102,10 +102,10 @@ img = imread('peppers.png');
 imgSize = size(img);
 
 fileName = 'img_rgb8_peppers.mhd';
-metaImageWrite(img, fileName);
+matImage.imStacks.metaImageWrite(img, fileName);
 
-info = metaImageInfo(fileName);
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo(fileName);
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -114,7 +114,7 @@ assertElementsAlmostEqual(imgSize, resSize);
 
 function testRW_Gray8_3D_initSizeFromSpacing
 
-info = metaImageInfo('img_10x15x20_gray8_Spc123.mhd');
+info = matImage.imStacks.metaImageInfo('img_10x15x20_gray8_Spc123.mhd');
 
 assertEqual([1 2 3], info.ElementSpacing);
 assertEqual([1 2 3], info.ElementSize);
@@ -122,14 +122,14 @@ assertEqual([1 2 3], info.ElementSize);
 
 function testRW_Gray8_3D_initSpacingFromSize
 
-info = metaImageInfo('img_10x15x20_gray8_Siz123.mhd');
+info = matImage.imStacks.metaImageInfo('img_10x15x20_gray8_Siz123.mhd');
 
 assertEqual([1 2 3], info.ElementSpacing);
 assertEqual([1 2 3], info.ElementSize);
 
 function testRW_Gray8_3D_noSizeInit
 
-info = metaImageInfo('img_10x15x20_gray8_noSizeInit.mhd');
+info = matImage.imStacks.metaImageInfo('img_10x15x20_gray8_noSizeInit.mhd');
 
 assertEqual([1 1 1], info.ElementSpacing);
 assertEqual([1 1 1], info.ElementSize);
@@ -143,10 +143,10 @@ img(3:7, 4:7) = 150;
 img(4:6, 5:6) = 250;
 imgSize = size(img);
 
-metaImageWrite(img, 'img_10x10x10_gray8');
+matImage.imStacks.metaImageWrite(img, 'img_10x10x10_gray8');
 
-info = metaImageInfo('img_10x10x10_gray8.mhd');
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo('img_10x10x10_gray8.mhd');
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -161,10 +161,10 @@ img(3:7, 4:7, 7:13) = 150;
 img(4:6, 5:6, 9:11) = 250;
 imgSize = size(img);
 
-metaImageWrite(img, 'img_10x15x20_gray8');
+matImage.imStacks.metaImageWrite(img, 'img_10x15x20_gray8');
 
-info = metaImageInfo('img_10x15x20_gray8.mhd');
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo('img_10x15x20_gray8.mhd');
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -182,13 +182,13 @@ imgSize = size(img);
 elementSize = [1 2 3];
 headerSize = 0;
 byteOrder = true;
-metaImageWrite(img, 'img_10x15x20_gray8', ...
+matImage.imStacks.metaImageWrite(img, 'img_10x15x20_gray8', ...
     'ElementSize', elementSize, ...
     'HeaderSize', headerSize,  ...
     'ElementByteOrderMSB', byteOrder);
 
-info = metaImageInfo('img_10x15x20_gray8.mhd');
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo('img_10x15x20_gray8.mhd');
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertTrue(isfield(info, 'ElementSize'));
@@ -219,10 +219,10 @@ img(3:7, 4:7, 7:13) = 150;
 img(4:6, 5:6, 9:11) = 250;
 imgSize = size(img);
 
-metaImageWrite(img, 'img_10x15x20_gray16');
+matImage.imStacks.metaImageWrite(img, 'img_10x15x20_gray16');
 
-info = metaImageInfo('img_10x15x20_gray16.mhd');
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo('img_10x15x20_gray16.mhd');
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -241,10 +241,10 @@ img(3:7, 4:7, 7:13) = 150;
 img(4:6, 5:6, 9:11) = 250;
 imgSize = size(img);
 
-metaImageWrite(img, 'img_10x15x20_int16');
+matImage.imStacks.metaImageWrite(img, 'img_10x15x20_int16');
 
-info = metaImageInfo('img_10x15x20_int16.mhd');
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo('img_10x15x20_int16.mhd');
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -260,14 +260,14 @@ function testRW_RGB8_3D_headOvr
 metadata = analyze75info('brainMRI.hdr');
 I = analyze75read(metadata);
 
-I2 = imOverlay(I, I>60, 'r', I==0, 'b');
+I2 = matImage.imFilters.imOverlay(I, I>60, 'r', I==0, 'b');
 imgSize = size(I2);
 
 fileName = 'img_rgb8_headOvr.mhd';
-metaImageWrite(I2, fileName);
+matImage.imStacks.metaImageWrite(I2, fileName);
 
-info = metaImageInfo(fileName);
-res = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo(fileName);
+res = matImage.imStacks.metaImageRead(info);
 resSize = size(res);
 
 assertEqual(length(imgSize), length(resSize));
@@ -277,8 +277,8 @@ assertElementsAlmostEqual(imgSize, resSize);
 function test_read_slices_list
 
 filename = 'BRNOR39e5p1List.mhd';
-info = metaImageInfo(fullfile('ratBrainMriSlices', filename));
-img = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo(fullfile('ratBrainMriSlices', filename));
+img = matImage.imStacks.metaImageRead(info);
 
 exp = [96 96 96];
 assertEqual(exp, size(img), 'image does not have the right size');
@@ -289,8 +289,8 @@ assertTrue(max(img(:))>0);
 function test_read_slices_pattern
 
 filename = 'BRNOR39e5p1Pattern.mhd';
-info = metaImageInfo(fullfile('ratBrainMriSlices', filename));
-img = metaImageRead(info);
+info = matImage.imStacks.metaImageInfo(fullfile('ratBrainMriSlices', filename));
+img = matImage.imStacks.metaImageRead(info);
 
 exp = [96 96 96];
 assertEqual(exp, size(img), 'image does not have the right size');

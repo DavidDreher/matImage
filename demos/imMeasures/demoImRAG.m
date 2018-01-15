@@ -30,7 +30,7 @@ distf = imfilter(dist, ones(3, 3)/9, inf);
 wat = watershed(distf, 4);
 
 % superposition of watershed on original image
-ovr = imOverlay(img, imdilate(wat==0, ones(3, 3)));
+ovr = matImage.imFilters.imOverlay(img, imdilate(wat==0, ones(3, 3)));
 
 % display result
 figure;
@@ -41,7 +41,7 @@ title('watershed');
 %% Region adjacency graph
 
 % Compute RAG
-[n e] = imRAG(wat);
+[n e] = matImage.imMeasures.imRAG(wat);
 
 % diplay RAG with surimpression
 hold on;

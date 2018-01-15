@@ -36,7 +36,7 @@ plot(p2(1), p2(2), 'ro');
 %% Compute geodesic path between markers
 
 % Compute and display the path as a polyline
-path = imGeodesicPath(img, p1, p2);
+path = matImage.imGeodesics.imGeodesicPath(img, p1, p2);
 
 % display the path on the image
 plot(path(:,1), path(:,2), 'color', 'm', 'linewidth', 2);
@@ -53,7 +53,7 @@ plot(p1(1), p1(2), 'bo');
 plot(p2(1), p2(2), 'ro');
 
 % Compute and display the path as a polyline
-path = imGeodesicPath(img, p1, p2);
+path = matImage.imGeodesics.imGeodesicPath(img, p1, p2);
 
 % display the path on the image
 plot(path(:,1), path(:,2), 'color', 'm', 'linewidth', 2);

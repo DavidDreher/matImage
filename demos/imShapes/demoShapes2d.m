@@ -38,7 +38,7 @@ angles = [...
 disc = [center 40];
 
 % generation of 3D image
-img = discreteDisc(lx, ly, disc);
+img = matImage.imShapes.discreteDisc(lx, ly, disc);
 
 % display image
 f = figure; 
@@ -56,7 +56,7 @@ for i = 1:4
     ellipse = [center 40 20 angles(i)];
 
     % generation of 3D image
-    img = discreteEllipse(lx, ly, ellipse);
+    img = matImage.imShapes.discreteEllipse(lx, ly, ellipse);
 
     % display image
     subplot(2, 2, i); 
@@ -75,7 +75,7 @@ for i = 1:4
     square = [center 60 angles(i)];
 
     % generation of 3D image
-    img = discreteSquare(lx, ly, square);
+    img = matImage.imShapes.discreteSquare(lx, ly, square);
 
     % display image
     subplot(2, 2, i); 
@@ -94,7 +94,7 @@ for i = 1:4
     rect = [center 60 30 angles(i)];
 
     % generation of 3D image
-    img = discreteRectangle(lx, ly, rect);
+    img = matImage.imShapes.discreteRectangle(lx, ly, rect);
 
     % display image
     subplot(2, 2, i); 
@@ -114,7 +114,7 @@ for i = 1:4
     caps = [center-[dx dy] center+[dx dy] 15];
 
     % generation of 3D image
-    img = discreteCapsule(lx, ly, caps);
+    img = matImage.imShapes.discreteCapsule(lx, ly, caps);
 
     % display image
     subplot(2, 2, i); 
@@ -133,7 +133,7 @@ for i = 1:4
     egg = [center 30 angles(i)];
 
     % generation of 3D image
-    img = discreteEgg(lx, ly, egg);
+    img = matImage.imShapes.discreteEgg(lx, ly, egg);
 
     % display image
     subplot(2, 2, i); 
@@ -152,7 +152,7 @@ for i = 1:4
     trefoil = [center 40 15 angles(i)];
 
     % generation of 3D image
-    img = discreteTrefoil(lx, ly, trefoil);
+    img = matImage.imShapes.discreteTrefoil(lx, ly, trefoil);
 
     % display image
     subplot(2, 2, i); 
@@ -171,7 +171,7 @@ for i = 1:4
     starfish = [center 40 20 angles(i)];
 
     % generation of 3D image
-    img = discreteStarfish(lx, ly, starfish);
+    img = matImage.imShapes.discreteStarfish(lx, ly, starfish);
 
     % display image
     subplot(2, 2, i); 

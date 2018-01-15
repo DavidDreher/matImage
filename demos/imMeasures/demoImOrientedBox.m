@@ -35,7 +35,7 @@ imshow(img2);
 
 % display histogram, to identify the threshold value
 figure(3); clf;
-imHistogram(img2);
+matImage.imMeasures.imHistogram(img2);
 
 % image binarisation, and remove particles touching border
 bin = img2 > 50;
@@ -55,7 +55,7 @@ imshow(rgb);
 %% Compute enclosing oriented boxes
 
 % call the function
-boxes = imOrientedBox(lbl);
+boxes = matImage.imMeasures.imOrientedBox(lbl);
 
 % display result
 hold on;
